@@ -1,0 +1,129 @@
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;*/
+  font-family: "DINNextLTPro-Regular",sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  body:not(.light) {
+    background-color: lightgray;
+    color: black;
+  }
+}
+body.dark {
+  background-color: black;
+  color: white;
+  transition-delay: 100ms;
+} */
+
+:root:not(.light) {
+  --background-color: #000;
+  --primary-color: #ce86ce;
+  --font-color: white;
+  --secondary-font-color: rgba(226, 232, 240, 1);
+  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+:root.light {
+  --background-color: #f8f9fa;
+  --primary-color: purple;
+  --font-color: #000;
+  --secondary-font-color: #495057;
+}
+
+body {
+  /* background-color: var(--background-color); */
+  background-color: #1d1d1b;
+  color: var(--font-color);
+  font-family: "DINNextLTPro-Regular",sans-serif;
+}
+
+p {
+    font-family: "DINNextLTPro-Regular",sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 26px;
+}
+
+h3 {
+    font-family: "DINNextLTPro-Regular",sans-serif;
+    font-size: 22px;
+    line-height: 26px;
+    color: var(--primary-color);
+}
+
+.chronoDivider {
+    background-color: var(--color-grey3,#ddd);
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: -10px;
+    width: 100%;
+}
+.pellet {
+    display: inline;
+    vertical-align: -6px;
+    padding-left: 2px;
+    margin-right: 1px;
+    font-size: 200%;
+    color: rgb(255, 187, 0);
+}
+.chrono {    
+    line-height: 300%;
+    border-bottom: 1px solid #666;
+}
+.chrono_item {
+    display: inline;
+    line-height: 300%;
+}
+.chrono_title {
+    display: inline;
+    color: #fff;
+}
+.chrono_header {
+    display: inline;
+}
+.chrono_time {
+    display: inline;
+}
+.chrono_tags {
+    display: inline;
+}
+.chrono_item a {    
+    color: var(--color-grey6,#b2b2b1);
+    text-decoration: none;
+}
+.chrono_item_important a {
+    text-decoration: none;
+}
+.chrono_item > a:visited > .chrono_header {
+    color: #997c98;
+}
+.chrono_item > a:visited > .chrono_title {
+    color: #997c98;
+}
+.chrono_item_important > a {
+    color: #ff5033;
+}
+.chrono_item_important > a > .chrono_title {
+    color: #ff5033;
+}
+.chrono_item_important > a:visited {
+    color: #e8947b;
+}
+.chrono_item_important > a:visited > .chrono_title {
+    color: #e8947b;
+}
