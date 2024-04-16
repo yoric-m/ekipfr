@@ -30,7 +30,8 @@ export async function fetchData(id) {
           }
           if (
             p.__type === "article_paragraph_media" &&
-            p.media.__type !== "base_video"
+            p.media.__type !== "base_video"  &&
+	    p.media.__type !== "video"
           ) {
             console.log(p.media);
             body += getImageTag(p.media.url, p.media.legende ?? "");
