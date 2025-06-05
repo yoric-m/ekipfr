@@ -50,7 +50,7 @@ export async function fetchData(id) {
     }
   });
   if (commUrl !== "") {
-    comments = await goGetComments(id, commUrl);
+    comments = goGetComments(commUrl);
   }
   return {
     title,
@@ -59,12 +59,12 @@ export async function fetchData(id) {
   };
 }
 
-const goGetComments = async (url, commUrl) => {
+const goGetComments = async (commUrl) => {
   let arrayComments = [];
   let response = await fetch(commUrl);
   let data = await response.json();
 
-  data.items.map((comm) => {
+  const promises = data.items.map(async (comm) => {
     let serieCom = [comm.content];
     
     if (comm.reaction_summary.comments.count >= 1) {
@@ -75,6 +75,7 @@ const goGetComments = async (url, commUrl) => {
     }
     arrayComments = [...arrayComments, serieCom];
   });
+  const resultPromises = Promise.all(promises);
   return arrayComments;
 };
 
