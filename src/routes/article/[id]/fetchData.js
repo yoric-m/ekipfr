@@ -50,7 +50,7 @@ export async function fetchData(id) {
     }
   });
   if (commUrl !== "") {
-    comments = goGetComments(commUrl);
+    comments = await goGetComments(commUrl);
   }
   return {
     title,
@@ -59,11 +59,16 @@ export async function fetchData(id) {
   };
 }
 
-const goGetComments = (commUrl) => {
+const goGetComments = async (commUrl) => {
   let arrayComments = [];
   let response = await fetch(commUrl);
   let data = await response.json();
 
+   data.items.map((comm) => {
+	   let serieCom = [comm.content];
+	   arrayComments = [...arrayComments, serieCom];
+   }
+/*
   const promises = data.items.map(async (comm) => {
     let serieCom = [comm.content];
     
@@ -76,6 +81,7 @@ const goGetComments = (commUrl) => {
     arrayComments = [...arrayComments, serieCom];
   });
   const resultPromises = Promise.all(promises);
+  */
   return arrayComments;
 };
 
