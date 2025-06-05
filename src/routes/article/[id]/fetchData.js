@@ -12,7 +12,7 @@ export async function fetchData(id) {
   let data = await response.json();
 
   commUrl = data.comment_count_url.replace("count", "limits/500/lasts/0/best");
-  comments = await goGetComments(id, commUrl);
+  //comments = await goGetComments(id, commUrl);
   data.items.map((e) => {
     if (e.layout === "article_feature") {
       title = e.objet.long_title;
