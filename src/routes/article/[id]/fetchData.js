@@ -6,14 +6,19 @@ export async function fetchData(id) {
   let imgEntete = "";
   let body = "";
   let comments = [];
+  let url_web = "";
 
   const urlToFetch = jsonUrl + id;
   let response = await fetch(urlToFetch);
   let data = await response.json();
 
-  commUrl = data.comment_count_url.replace("count", "limits/500/lasts/0/best");
+  //commUrl = data.comment_count_url.replace("count", "limits/500/lasts/0/best");
   //comments = await goGetComments(id, commUrl);
   data.items.map((e) => {
+    if (e.layout === "layout_DFP") {
+      url_web = e.objet.content_url.web.slice(22);
+      commUrl = "https://dwh.lequipe.fr/api/user-interaction/comments?reaction_summary.target_type=news&reaction_summary.target_uri=" + url_web + "&itemsPerPage=500&commentsSort=relevance&commentsSortDirection=desc&platform=desktop&version=1.0"
+    }
     if (e.layout === "article_feature") {
       title = e.objet.long_title;
       if (e.objet.media.url) {
@@ -44,6 +49,9 @@ export async function fetchData(id) {
         });
     }
   });
+  if (commUrl !== "") {
+    comments = await goGetComments(id, commUrl);
+  }
   return {
     title,
     body,
