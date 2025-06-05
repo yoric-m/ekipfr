@@ -64,6 +64,25 @@ const goGetComments = async (url, commUrl) => {
   let response = await fetch(commUrl);
   let data = await response.json();
 
+  data.items.map((comm) => {
+    let serieCom = [comm.content];
+    
+    if (comm.reaction_summary.comments.count >= 1) {
+      let com_uri = "https://dwh.lequipe.fr/api/user-interaction/comments?reaction_summary.target_type=comment&reaction_summary.target_uri=" + comm.reaction_summary.uri + "&itemsPerPage=100&commentsSort=chronological&commentsSortDirection=asc&platform=desktop&version=1.0";
+      let response_com = await fetch(com_uri);
+      let data_com = await response_com.json();
+      data_com.items.map((scom) => serieCom.push("> " + scom.content));
+    }
+    arrayComments = [...arrayComments, serieCom];
+  });
+  return arrayComments;
+};
+
+const old_goGetComments = async (url, commUrl) => {
+  let arrayComments = [];
+  let response = await fetch(commUrl);
+  let data = await response.json();
+
   data.comments.map((comm) => {
     let serieCom = [comm.text];
     if (comm.comments) {
