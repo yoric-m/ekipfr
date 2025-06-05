@@ -67,7 +67,7 @@ const goGetComments = async (commUrl) => {
    data.items.map((comm) => {
 	   let serieCom = [comm.content];
 	   arrayComments = [...arrayComments, serieCom];
-   }
+   });
 /*
   const promises = data.items.map(async (comm) => {
     let serieCom = [comm.content];
