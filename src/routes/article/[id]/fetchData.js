@@ -59,7 +59,7 @@ export async function fetchData(id) {
   };
 }
 
-const goGetComments = async (commUrl) => {
+const goGetComments = (commUrl) => {
   let arrayComments = [];
   let response = await fetch(commUrl);
   let data = await response.json();
