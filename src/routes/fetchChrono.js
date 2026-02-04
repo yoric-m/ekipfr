@@ -1,5 +1,5 @@
 export async function fetchChrono() {
-    const jsonUrl = "https://dwh.lequipe.fr/api/edito/chrono?path=/Tennis/&context=page&page=1&platform=desktop&version=1.3/";
+    const jsonUrl = "https://dwh.lequipe.fr/api/edito/chrono?path=/Tennis/&context=page&page=1&platform=desktop&version=1.4/";
   
     let imgEntete = "";
     let body = [];
